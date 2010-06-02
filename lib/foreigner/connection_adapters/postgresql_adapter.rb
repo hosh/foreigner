@@ -6,18 +6,18 @@ module Foreigner
       
       def foreign_keys(table_name)
         fk_info = select_all %{
-          SELECT tc.constraint_name as name
-                ,ccu.table_name as to_table
-                ,ccu.column_name as primary_key
-                ,kcu.column_name as column
-                ,rc.delete_rule as dependency
+          SELECT tc.constraint_name as name,
+            ccu.table_name as to_table,
+            ccu.column_name as primary_key,
+            kcu.column_name as column,
+            rc.delete_rule as dependency
           FROM information_schema.table_constraints tc
           JOIN information_schema.key_column_usage kcu
-          USING (constraint_catalog, constraint_schema, constraint_name)
+            USING (constraint_catalog, constraint_schema, constraint_name)
           JOIN information_schema.referential_constraints rc
-          USING (constraint_catalog, constraint_schema, constraint_name)
+            USING (constraint_catalog, constraint_schema, constraint_name)
           JOIN information_schema.constraint_column_usage ccu
-          USING (constraint_catalog, constraint_schema, constraint_name)
+            USING (constraint_catalog, constraint_schema, constraint_name)
           WHERE tc.constraint_type = 'FOREIGN KEY'
             AND tc.constraint_catalog = '#{@config[:database]}'
             AND tc.table_name = '#{table_name}'

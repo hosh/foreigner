@@ -11,10 +11,10 @@ module Foreigner
 
       def foreign_keys(table_name)
         fk_info = select_all %{
-          SELECT fk.referenced_table_name as 'to_table'
-                ,fk.referenced_column_name as 'primary_key'
-                ,fk.column_name as 'column'
-                ,fk.constraint_name as 'name'
+          SELECT fk.referenced_table_name as 'to_table',
+            fk.referenced_column_name as 'primary_key',
+            fk.column_name as 'column',
+            fk.constraint_name as 'name'
           FROM information_schema.key_column_usage fk
           WHERE fk.referenced_column_name is not null
             AND fk.table_schema = '#{@config[:database]}'
