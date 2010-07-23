@@ -25,9 +25,11 @@ module Foreigner
     def on_load(&block)
       if defined?(Rails) && Rails.version >= '3.0'
         ActiveSupport.on_load :active_record do
-          unless ActiveRecord::Base.connected?
-            ActiveRecord::Base.configurations = Rails.application.config.database_configuration
-            ActiveRecord::Base.establish_connection
+          ActiveSupport.on_load :before_initialize do
+            unless ActiveRecord::Base.connected?
+              ActiveRecord::Base.configurations = Rails.application.config.database_configuration
+              ActiveRecord::Base.establish_connection
+            end
           end
           block.call
         end
