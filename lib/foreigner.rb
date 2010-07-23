@@ -30,8 +30,8 @@ module Foreigner
               ActiveRecord::Base.configurations = Rails.application.config.database_configuration
               ActiveRecord::Base.establish_connection
             end
+            block.call
           end
-          block.call
         end
       else
         yield
