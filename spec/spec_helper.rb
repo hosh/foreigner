@@ -1,6 +1,3 @@
-
-require 'rubygems'
-
 require 'rspec'
 
 require 'active_support'
@@ -12,6 +9,7 @@ require 'foreigner'
 require "foreigner/connection_adapters/postgresql_adapter"
 require "foreigner/connection_adapters/mysql_adapter"
 require "foreigner/connection_adapters/sqlite3_adapter"
+
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
