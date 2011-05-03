@@ -107,3 +107,6 @@ Copyright (c) 2010 Ho-Sheng Hsiao, released under the MIT license
 Modified from code written by David Wilkie and Matt Higgins. See http://github.com/sparkfly/foreigner for details on
 what got changed from what.
 
+Contributions:
+ - theaboutbox https://github.com/theaboutbox/foreigner
+
