@@ -1,5 +1,30 @@
+CONFIGURATIONS = {
+  :postgresql => {
+    :adapter => "postgresql",
+    :username => "root",
+    :password => "",
+    :database => "test_foreigner_gem",
+    :min_messages => "ERROR"
+  },
+  :postgresql_admin => {
+    :adapter => "postgresql",
+    :username => "root",
+    :password => "",
+    :database => "test",
+    :min_messages => "ERROR"
+  }, # :postgresql_admin is used to connect in; :postgresql is used to actually test the migrations
+  :mysql => {
+    :adapter => 'mysql',
+    :host => 'localhost',
+    :username => 'root',
+    :database => 'foreigner_test'
 
-# CONFIGURATIONS is defined in spec_helper
+  }, 
+  :sqlite3 => {
+    :adapter => "sqlite3",
+    :database => ":memory:"
+  }
+}
 
 module AdapterHelper
   module AdapterTestHarness

@@ -7,7 +7,7 @@ desc 'Default: run specs.'
 task :default => :spec
 
 desc 'Run the specs'
-Rspec::Core::RakeTask.new(:spec) do |t|
+RSpec::Core::RakeTask.new(:spec) do |t|
   #t.spec_opts = ['--colour --format progress --loadby mtime --reverse']
   #t.spec_files = FileList['spec/**/*_spec.rb']
 end
