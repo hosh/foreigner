@@ -15,7 +15,7 @@ module Foreigner
       end
 
       def add_foreign_key(from_table, to_table, options = {})
-        column  = options[:column] || "#{to_table.to_s.singularize}_id"
+        column  = options[:column] || column_name(to_table)
         foreign_key_name = foreign_key_name(from_table, column, options)
         primary_key = options[:primary_key] || "id"
         reference = sql_for_reference(to_table, primary_key)
