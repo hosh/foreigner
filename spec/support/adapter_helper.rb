@@ -18,7 +18,7 @@ if ENV['TRAVIS']
       :adapter => 'mysql',
       :host => 'localhost',
       :username => 'root',
-      :database => 'foreigner_test' }, 
+      :database => 'test' }, 
     :sqlite3 => {
       :adapter => "sqlite3",
       :database => ":memory:" } }
