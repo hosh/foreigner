@@ -9,22 +9,25 @@ was taken out.
 
 h2. Test Coverage
 
+sparkfly-foreigner runs on Travis CI, and you can "see the results":http://travis-ci.org/#!/hosh/foreigner 
+tested against Ruby 1.8.7, 1.9.2, and 1.9.3 across all three databases.
+
 These tests were created and tested against our target platform, Rails 3. If you are using Rails 2.3.5, 
 use sparkfly-foreigner 0.6.0. this currently works with Rails 3.0 beta 3.
 
-Rspec coverage was against Rspec 2.0 beta6
+Rspec coverage was against Rspec 2.x. (Currently 2.5)
 
-PostgreSQL (tested against 8.3.9, 8.4.2)
+PostgreSQL (tested against 8.3.9, 8.4.2, 9.0.3)
  - "Schema" tests: do the table migrations actually add referential integrity?
  - "Schema Extractor" tests: does the foreign_key() method extract out the foreign key from information_schema? 
  - "Semantics" tests: do the add/drop constraints emit proper SQL?
 
-MySQL (tested against 5.0.90 / Gentoo mysql-5.0.90-r2 hardened x86_64)
+MySQL (tested against 5.0.90, 5.1.56)
  - "Schema" tests: do the table migrations actually add referential integrity?
  - "Schema Extractor" tests: does the foreign_key() method extract out the foreign key from information_schema? 
  - "Semantics" tests: do the add/drop constraints emit proper SQL?
 
-SQLite3 (tested against 3.6.22 in-memory only)
+SQLite3 (tested against 3.6.22, 3.7.6.3 in-memory only)
  - "Semantics" tests: do the add/drop constraints emit proper SQL?
  - Warning: sqlite3 probably does not actually work when you use it.
 
