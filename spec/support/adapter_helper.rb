@@ -1,30 +1,53 @@
-CONFIGURATIONS = {
-  :postgresql => {
+if ENV['TRAVIS']
+  CONFIGURATIONS = {
+    :postgresql => {
+      :adapter => "postgresql",
+      :username => "postgres",
+      :password => "",
+      :database => "test",
+      :min_messages => "ERROR" },
+    :postgresql_admin => {
+      :adapter => "postgresql",
+      :username => "postgres",
+      :password => "",
+      :database => "admin",
+      :min_messages => "ERROR"
+      }, 
+    # :postgresql_admin is used to connect in; :postgresql is used to actually test the migrations
+    :mysql => {
+      :adapter => 'mysql',
+      :host => 'localhost',
+      :username => 'root',
+      :database => 'foreigner_test' }, 
+    :sqlite3 => {
+      :adapter => "sqlite3",
+      :database => ":memory:" } }
+else 
+  CONFIGURATIONS = {
+    :postgresql => {
     :adapter => "postgresql",
     :username => "root",
     :password => "",
     :database => "test_foreigner_gem",
     :min_messages => "ERROR"
   },
-  :postgresql_admin => {
-    :adapter => "postgresql",
-    :username => "root",
-    :password => "",
-    :database => "test",
-    :min_messages => "ERROR"
-  }, # :postgresql_admin is used to connect in; :postgresql is used to actually test the migrations
-  :mysql => {
-    :adapter => 'mysql',
-    :host => 'localhost',
-    :username => 'root',
-    :database => 'foreigner_test'
-
-  }, 
-  :sqlite3 => {
-    :adapter => "sqlite3",
-    :database => ":memory:"
+    :postgresql_admin => {
+      :adapter => "postgresql",
+      :username => "root",
+      :password => "",
+      :database => "test",
+      :min_messages => "ERROR" }, 
+  # :postgresql_admin is used to connect in; :postgresql is used to actually test the migrations
+    :mysql => {
+      :adapter => 'mysql',
+      :host => 'localhost',
+      :username => 'root',
+      :database => 'foreigner_test' }, 
+    :sqlite3 => {
+      :adapter => "sqlite3",
+      :database => ":memory:" }
   }
-}
+end
 
 module AdapterHelper
   module AdapterTestHarness
